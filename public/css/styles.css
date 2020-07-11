@@ -1,0 +1,10 @@
+.fond{
+	background-image: url(../img/fond.png);
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+.card{
+	border-radius: 20px; 
+	top: 18%;
+}

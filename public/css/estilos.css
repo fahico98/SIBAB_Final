@@ -1,0 +1,506 @@
+@font-face {
+	font-family: louis;
+	src: url(../font/fuenteGeorge/Louis_George_Cafe.ttf);
+}
+
+@font-face {
+	font-family: josefin;
+	src: url(../font/fuenteJosefin/JosefinSlab-Regular.ttf);
+}
+
+* {
+	font-family: louis, sans-serif !important;
+}
+body, .navbar{
+	padding-right: 0 !important
+}
+
+.planeem {
+	-moz-transform: scalex(-1);
+	-o-transform: scalex(-1);
+	-webkit-transform: scalex(-1);
+	transform: scalex(-1);
+	-ms-filter: "FlipH";
+	filter: FlipH;
+	font-family: josefin, sans-serif !important;
+}
+
+.titulo {
+	-webkit-text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
+	-moz-text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
+	text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
+}
+
+.text {
+	color: white;
+	font-family: louis, sans-serif;
+	font-weight: bold !important;
+	-webkit-text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+	-moz-text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+	text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+.fuente {
+	font-family: louis, sans-serif !important;
+}
+
+.fuenteTitulo {
+	font-family: josefin, sans-serif !important;
+}
+
+.sombreadoCuadro {
+	-webkit-box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.75);
+	box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.75);
+}
+
+/* ESTILOS BOTONES REDONDOS */
+
+.btn-circle.btn-xl {
+	width: 70px !important;
+	height: 70px !important;
+	padding: 10px 16px !important;
+	border-radius: 35px !important;
+	font-size: 24px !important;
+	line-height: 1.33 !important;
+}
+
+.btn-circle.btn-lg {
+	width: 50px !important;
+	height: 50px !important;
+	padding: 10px 16px !important;
+	border-radius: 35px !important;
+	font-size: 24px !important;
+	line-height: 1.33 !important;
+}
+
+.btn-circle {
+	width: 30px !important;
+	height: 30px !important;
+	padding: 6px 0px !important;
+	border-radius: 15px !important;
+	text-align: center !important;
+	font-size: 12px !important;
+	line-height: 1.42857 !important;
+}
+
+/* COLOR DE ITEMS */
+
+.navbar .navbar-nav a {
+	color: black !important;
+	font-family: louis, serif;
+	font-weight: bold;
+}
+
+.navbar .navbar-nav a:hover {
+	color: #fb7323 !important;
+}
+
+/* COLOR DE ITEMS INICIO Y REGISTRATE */
+
+.navbar .navbar-nav .nav-item a {
+	color: black !important;
+	font-family: louis, serif;
+	font-weight: bold;
+}
+
+.navbar .navbar-nav .nav-item a:hover {
+	color: #0c8080 !important;
+}
+
+/* SECCION QUIENES SOMOS */
+
+.quienesSomos {
+	margin-top: 57px;
+	height: 100vh;
+	width: 100%;
+	background-image: url(../img/quienes.jpg);
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
+.quienesSomos>div {
+	width: 100%;
+	height: 100%;
+	margin: 0 !important;
+}
+
+/* CONTENEDOR VERDE */
+
+.texto-cuadro {
+	background-color: rgba(12, 128, 128, .8);
+	border-radius: 50px;
+	/* padding: 15%; */
+}
+
+/* TITULO QUIENES SOMOS */
+
+.tituloQuienesSomos {
+	font-size: 60px !important;
+	color: white;
+	font-family: louis, sans-serif;
+	font-weight: bold !important;
+	margin-bottom: 20px;
+}
+
+/* SECCION QUE ES PLANEEM */
+
+.queEsPlaneEm {
+	height: 100vh;
+	width: 100%;
+	background-image: url(../img/fondoLogo.jpg);
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.queEsPlaneEm>div {
+	height: 100%;
+	width: 100%;
+	margin: 0
+}
+
+.naranja {
+	color: #fb7323;
+}
+
+.tituloQueEs {
+	font-family: josefin, serif;
+	font-weight: bold;
+}
+
+.tituloQ {
+	-webkit-text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+	-moz-text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+	text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+.verde {
+	color: #0c8080;
+}
+
+.texto-cuadroQ {
+	background-color: #0c8080;
+	border-radius: 50px;
+	/* padding: 10%; */
+}
+
+/* EQUIPO DE TRABAJO */
+
+.equipoDeTrabajo {
+	height: 100vh;
+	width: 100%;
+	background-image: url(../img/equipo.jpg);
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.cuadroEquipoDeTrabajo {
+	width: 50vh;
+	height: 100%;
+	background-color: black;
+}
+
+.img1 {
+	background-image: url(../img/diseño4.jpg);
+	background-position: center;
+	background-size: cover
+}
+
+.img2 {
+	background-image: url(../img/desarrollador2.jpg);
+	background-position: center;
+	background-size: cover
+}
+
+.img3 {
+	background-image: url(../img/manager2.jpg);
+	background-position: center;
+	background-size: cover
+}
+
+/* CONTACTOS */
+
+.Contactos {
+	height: 100vh;
+	width: 100%;
+	background-color: white;
+}
+
+.boton-enviar-contacto {
+	border-radius: 20px !important;
+}
+
+/* animación social bar */
+
+.contenedorPadreC {
+	position: absolute;
+	left: 10px;
+}
+
+.contenedor {
+	height: 90px;
+	/* bottom: 0px; */
+	display: flex;
+	align-items: center
+}
+
+.contenedor2 {
+	height: 90px;
+	display: flex;
+	align-items: center
+}
+
+.contenedor3 {
+	height: 90px;
+	display: flex;
+	align-items: center
+}
+
+.botonF1 {
+	cursor: pointer;
+	width: 60px;
+	height: 60px;
+	background: transparent;
+	border: none;
+	outline: none;
+	/* color: red; */
+	color: white;
+	font-size: 36px;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+	transition: .3s;
+}
+
+span {
+	transition: .5s;
+}
+
+.botonF1:active {
+	transform: scale(1.1);
+}
+
+.btnC {
+	height: 50px;
+	width: 320px;
+	border: none;
+	color: #FFF;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+	outline: none;
+	justify-content: center;
+	align-items: center;
+	transform: scale(0);
+}
+
+.botonF2 {
+	background: #2196F3;
+	transition: 0.5s;
+	width: 300px !important;
+	margin: 0 !important;
+}
+
+.animacionVer {
+	transform: scale(1);
+}
+
+/* SECTION ENLACES */
+
+.Enlaces {
+	padding: 80px;
+	/* height: 90vh; */
+	width: 100%;
+	background-image: url(../img/fondoLogo.jpg);
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.tituloEnlaces {
+	color: #0c8080;
+	font-weight: bold
+}
+
+.contenedorLogos {
+	height: 250px;
+}
+
+/* Estilo animacion logos */
+
+.contenedorI {
+	align-items: center;
+	background: transparent;
+	display: flex;
+	height: 100%;
+	justify-content: center;
+}
+
+@keyframes scroll {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(calc(-250px * 7));
+	}
+}
+
+.sliderI {
+	background: transparent;
+	box-shadow: 0 10px 20px -5px transparent;
+	height: 100px;
+	margin: auto;
+	overflow: hidden;
+	position: relative;
+	width: 960px;
+}
+
+.sliderI::before, .sliderI::after {
+	/* background: linear-gradient(to right, transparent 0%, transparent 100%); */
+	content: "";
+	height: 100px;
+	position: absolute;
+	/* width: 200px; */
+	z-index: 2;
+}
+
+.sliderI::after {
+	right: 0;
+	top: 0;
+	transform: rotateZ(180deg);
+}
+
+.sliderI::before {
+	left: 0;
+	top: 0;
+}
+
+.sliderI .slide-track {
+	animation: scroll 40s linear infinite;
+	display: flex;
+	width: calc(250px * 14);
+}
+
+.sliderI .slide {
+	height: 100px;
+	width: 250px;
+}
+
+@media (max-width: 450px) {
+	.Enlaces {
+		padding: 60px;
+	}
+	.texto-cuadro {
+		height: 75% !important;
+	}
+	/* TITULO QUIENES SOMOS */
+	.tituloQuienesSomos {
+		font-size: 30px !important;
+	}
+	.t-responsive {
+		font-size: 45px !important;
+	}
+	.boxSepEnlace {
+		height: 100% !important;
+	}
+	.texto-cuadroQ {
+		height: 75% !important;
+	}
+	/* QUE ES PLANEEN */
+	.planEstrategico {
+		font-size: 20px !important;
+	}
+}
+
+@media (max-width: 1000px) and (min-width: 450px) {
+	.texto-cuadro {
+		padding: 10%;
+	}
+	.texto-cuadroQ {
+		padding: 10%;
+	}
+	/* TITULO QUIENES SOMOS */
+	.tituloQuienesSomos {
+		font-size: 50px !important;
+	}
+	/* titulo Que es */
+	.t-responsive {
+		font-size: 80px !important;
+	}
+}
+/* ESTILOS PARA FORMULARIO MODAL DEL REGISTRO Y LOGIN */
+.modal-dialog.cascading-modal .modal-c-tabs .md-tabs {
+	-webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
+	margin: -1.5rem 1rem 0 1rem;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+}
+
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+	color: #495057;
+	background-color: #fff;
+	border-color: #dee2e6 #dee2e6 #fff;
+}
+
+.md-tabs .nav-link {
+	-webkit-transition: all .4s;
+	-o-transition: all .4s;
+	transition: all .4s;
+	border: 0;
+	color: #fff;
+}
+
+.light-blue.darken-3 {
+	background-color: #0277bd !important;
+}
+
+.md-tabs .nav-item.open .nav-link,
+.md-tabs .nav-link.active {
+	background-color: rgba(0, 0, 0, .2);
+	color: #fff;
+	-webkit-transition: all 1s;
+	-o-transition: all 1s;
+	transition: all 1s;
+	-webkit-border-radius: .25rem;
+	border-radius: .25rem;
+}
+
+.light-blue {
+	background-color: #03a9f4 !important;
+}
+
+.nav-tabs {
+	border-bottom: 1px solid #dee2e6;
+}
+
+.modal-dialog.cascading-modal .modal-c-tabs .md-tabs li a {
+	text-align: center;
+}
+
+.md-tabs {
+	-webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, .18), 0 4px 15px 0 rgba(0, 0, 0, .15);
+	box-shadow: 0 5px 11px 0 rgba(0, 0, 0, .18), 0 4px 15px 0 rgba(0, 0, 0, .15);
+	border: 0;
+	padding: .7rem;
+	margin-left: 1rem;
+	margin-right: 1rem;
+	margin-bottom: -20px;
+	background-color: #2bbbad;
+	z-index: 1;
+	position: relative;
+	-webkit-border-radius: .25rem;
+	border-radius: .25rem;
+}
+.modal-open{
+	padding-right: 0 !important;
+}

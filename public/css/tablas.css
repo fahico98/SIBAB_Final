@@ -1,0 +1,28 @@
+table.GeneratedTable {
+  width: 74%;
+  margin-left: 14%;
+  background-color: #ffffff;
+  border-collapse: collapse;
+  border-width: 2px;
+  border-color: #ffcc00;
+  border-style: solid;
+  color: #000000;
+}
+
+table.GeneratedTable td, table.GeneratedTable th {
+  border-width: 2px;
+  border-color: #ffcc00;
+  border-style: solid;
+  padding: 3px;
+  text-align: center;
+}
+
+table.GeneratedTable thead {
+  background-color: #ffcc00;
+}
+
+.TituloListaAprendices {
+  text-align: center;
+  font-weight: bold;
+  margin-left: 4%;
+}

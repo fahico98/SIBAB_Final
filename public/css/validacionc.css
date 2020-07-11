@@ -1,0 +1,13 @@
+input.error{
+    line-height:22px;
+   background-color: #F78181;
+   border: 0px;
+   box-sizing: border-box;
+}
+
+input{
+    border: 0px;
+    box-sizing: border-box;
+    background-color:rgb(165, 129, 82);
+
+}
