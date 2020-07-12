@@ -12,7 +12,9 @@ use App\Models\convocatoria;
 use App\Models\datos_aprendices;
 use App\Models\asistencia;
 use App\Models\DiaAsistencia;
+use App\Mail\MensajeAviso;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class ControllerSeleccion extends Controller
 {
@@ -23,22 +25,6 @@ class ControllerSeleccion extends Controller
      */
     public function index()
     {
-        // @foreach($Postulados as $Postulado)
-        // @foreach($beneficio as $beneficios)
-        // @foreach($convocatoria as $convocatorias)
-
-        // @if($Postulado->id_convocatoria == $convocatorias->id_convocatoria &&
-        //     $convocatorias->id_beneficio == $beneficios->id_beneficio &&
-        //     $beneficios->encargado == Auth::user()->id_usuario)
-
-        // @foreach($socioeconomico as $socioeconomicos)
-
-        // @if($Postulado->id_socioeconomico == $socioeconomicos->id_socioeconomico)
-
-        // @foreach($datos_aprendices as $datos_aprendice)
-
-        // @if($socioeconomicos->id_datos_aprendiz == $datos_aprendice->id_datos_aprendiz)
-
         $beneficio = beneficio::where("encargado", Auth::user()->id_usuario)
             ->select("id_beneficio")
             ->get();
@@ -127,18 +113,24 @@ class ControllerSeleccion extends Controller
                         ->select("email")
                         ->get();
 
-                    $usuario = User::where("email", $email[0]->email)
-                        ->select("id_usuario")
-                        ->get();
+                    $usuario = User::where("email", $email[0]->email)->first();
 
                     $dia_asistencia = new DiaAsistencia;
                     $dia_asistencia->fecha = $request->fecha;
                     $dia_asistencia->dia_semana = $request->dia_semana;
                     $dia_asistencia->asistencia = 0;
-                    $dia_asistencia->id_usuario = $usuario[0]->id_usuario;
+                    $dia_asistencia->id_usuario = $usuario->id_usuario;
                     $dia_asistencia->id_encargado = $encargado->id_usuario;
                     $dia_asistencia->id_beneficio = $beneficio[0]->id_beneficio;
                     $dia_asistencia->save();
+
+                    $fails = DiaAsistencia::where("id_usuario", $usuario->id_usuario)
+                        ->where("asistencia", 0)
+                        ->get();
+
+                    if(count($fails) >= 3){
+                        Mail::to($usuario->email)->send(new MensajeAviso);
+                    }
                 }
             }
         }else{
@@ -151,18 +143,24 @@ class ControllerSeleccion extends Controller
                     ->select("email")
                     ->get();
 
-                $usuario = User::where("email", $email[0]->email)
-                    ->select("id_usuario")
-                    ->get();
+                $usuario = User::where("email", $email[0]->email)->first();
 
                 $dia_asistencia = new DiaAsistencia;
                 $dia_asistencia->fecha = $request->fecha;
                 $dia_asistencia->dia_semana = $request->dia_semana;
                 $dia_asistencia->asistencia = 0;
-                $dia_asistencia->id_usuario = $usuario[0]->id_usuario;
+                $dia_asistencia->id_usuario = $usuario->id_usuario;
                 $dia_asistencia->id_encargado = $encargado->id_usuario;
                 $dia_asistencia->id_beneficio = $beneficio[0]->id_beneficio;
                 $dia_asistencia->save();
+
+                $fails = DiaAsistencia::where("id_usuario", $usuario->id_usuario)
+                    ->where("asistencia", 0)
+                    ->get();
+
+                if(count($fails) >= 3){
+                    Mail::to($usuario->email)->send(new MensajeAviso);
+                }
             }
         }
         return redirect()->route("asistenciaSeleccion");
