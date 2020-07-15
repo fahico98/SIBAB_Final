@@ -108,8 +108,8 @@ Route::get('/asistenciacivica', 'ControlCController@index')->name('asistenciaciv
 Route::get('/getasistenciacivica', 'ControlCController@getDataC')->name('datatable.asistenciacivica')->middleware('Admin_Fun_Aux');
 
 
-Route::get('/SeleccionAsistencia','ControllerSeleccion@index')->name('asistenciaSeleccion');
-Route::put('/SeleccionAsistencia/create','ControllerSeleccion@create')->name('asistenciaSeleccion.create');
+Route::get('/SeleccionAsistencia/{id_usuario}','ControllerSeleccion@index')->name('asistenciaSeleccion');
+Route::get('/SeleccionAsistencia/create/{id_usuario}','ControllerSeleccion@create')->name('asistenciaSeleccion.create');
 
 // Route::put('/SeleccionAsistencia/{id}','ControllerSeleccion@lunes')->name('lunes');
 // Route::put('/SeleccionAsistenciam/{id}','ControllerSeleccion@martes')->name('martes');

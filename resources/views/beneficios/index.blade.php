@@ -6,14 +6,14 @@
   <div class="card">
     <div class="card-body">
       <h3 class="TituloListaAprendices">Beneficios disponibles</h3>
-      <div class="row justify-content-center">       
+      <div class="row justify-content-center">
           <div class="card-body">
           <div class="col-12">
             <a class="btn btn-primary" href="/beneficios/create" style="float: right;">Crear beneficio</a>
           </div>
         </div>
 
-        <div class="col-md-12">          
+        <div class="col-md-12">
           <table class="table">
             <thead>
               <tr>
@@ -24,6 +24,7 @@
                 <th class="text-center">Estado</th>
                 <th class="text-center">Cambiar estado</th>
                 <th class="text-center">Cambiar informacion</th>
+                <th class="text-center">Asistencia</th>
               </tr>
             </thead>
             <tbody>
@@ -81,10 +82,18 @@
                       </form>
                     </div>
                   </div>
-                </div>       
+                </div>
               </td>
               <td class="text-center">
                 <a class="btn btn-primary" href="{{ route('beneficios.edit', [$beneficio->id_beneficio]) }}">Editar</a>
+              </td>
+              <td>
+                @foreach($datos as $dato)
+                    @if($beneficio->encargado == $dato->id_usuario)
+                        <a type="button" class="btn btn-primary"
+                            href="{{ route('asistenciaSeleccion', [$dato->id_usuario]) }}">Ver</a>
+                    @endif
+                @endforeach
               </td>
             </tr>@endforeach
           </tbody>
@@ -114,13 +123,13 @@
     })
     .then((willDelete) => {
       if (willDelete) {
-        
+
       } else {
         swal("Your imaginary file is safe!");
       }
     });
-}   
-    
+}
+
 </script> --}}
 @endsection
 

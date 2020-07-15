@@ -23,9 +23,10 @@ class ControllerSeleccion extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $beneficio = beneficio::where("encargado", Auth::user()->id_usuario)
+        // Auth::user()->id_usuario
+        $beneficio = beneficio::where("encargado", $request->id_usuario)
             ->select("id_beneficio")
             ->get();
 
@@ -43,31 +44,34 @@ class ControllerSeleccion extends Controller
             ->join("datos_aprendices", "socioeconomicos.id_datos_aprendiz", "datos_aprendices.id_datos_aprendiz")
             ->get();
 
-        $dias_asistencia = DiaAsistencia::where("id_encargado", Auth::user()->id_usuario)
+        $dias_asistencia = DiaAsistencia::where("id_encargado", $request->id_usuario)
             ->where("id_beneficio", $beneficio[0]->id_beneficio)
+            ->orderBy("fecha")
             ->get();
 
-        $dias_asistencia_grouped = DiaAsistencia::where("id_encargado", Auth::user()->id_usuario)
+        $dias_asistencia_grouped = DiaAsistencia::where("id_encargado", $request->id_usuario)
             ->where("id_beneficio", $beneficio[0]->id_beneficio)
             ->groupBy("fecha")
+            ->orderBy("fecha")
             ->get();
+
+        $id_encargado = $request->id_usuario;
 
         return view('asistenciaSeleccion.index',
             compact(
                 "datos_aprendices",
                 "dias_asistencia",
-                "dias_asistencia_grouped"
+                "dias_asistencia_grouped",
+                "id_encargado"
             )
         );
     }
 
     public function create(Request $request)
     {
-        $beneficio = beneficio::where("encargado", Auth::user()->id_usuario)
+        $beneficio = beneficio::where("encargado", $request->id_usuario)
             ->select("id_beneficio")
             ->get();
-
-        $encargado = Auth::user();
 
         $created = false;
 
@@ -96,7 +100,7 @@ class ControllerSeleccion extends Controller
                         $dia_asistencia->dia_semana = $request->dia_semana;
                         $dia_asistencia->asistencia = 1;
                         $dia_asistencia->id_usuario = $usuario[0]->id_usuario;
-                        $dia_asistencia->id_encargado = $encargado->id_usuario;
+                        $dia_asistencia->id_encargado = $request->id_usuario;
                         $dia_asistencia->id_beneficio = $beneficio[0]->id_beneficio;
                         $dia_asistencia->save();
                         $created = true;
@@ -120,7 +124,7 @@ class ControllerSeleccion extends Controller
                     $dia_asistencia->dia_semana = $request->dia_semana;
                     $dia_asistencia->asistencia = 0;
                     $dia_asistencia->id_usuario = $usuario->id_usuario;
-                    $dia_asistencia->id_encargado = $encargado->id_usuario;
+                    $dia_asistencia->id_encargado = $request->id_usuario;
                     $dia_asistencia->id_beneficio = $beneficio[0]->id_beneficio;
                     $dia_asistencia->save();
 
@@ -128,7 +132,7 @@ class ControllerSeleccion extends Controller
                         ->where("asistencia", 0)
                         ->get();
 
-                    if(count($fails) >= 3){
+                    if(count($fails) == 3){
                         Mail::to($usuario->email)->send(new MensajeAviso);
                     }
                 }
@@ -150,7 +154,7 @@ class ControllerSeleccion extends Controller
                 $dia_asistencia->dia_semana = $request->dia_semana;
                 $dia_asistencia->asistencia = 0;
                 $dia_asistencia->id_usuario = $usuario->id_usuario;
-                $dia_asistencia->id_encargado = $encargado->id_usuario;
+                $dia_asistencia->id_encargado = $request->id_usuario;
                 $dia_asistencia->id_beneficio = $beneficio[0]->id_beneficio;
                 $dia_asistencia->save();
 
@@ -158,12 +162,12 @@ class ControllerSeleccion extends Controller
                     ->where("asistencia", 0)
                     ->get();
 
-                if(count($fails) >= 3){
+                if(count($fails) == 3){
                     Mail::to($usuario->email)->send(new MensajeAviso);
                 }
             }
         }
-        return redirect()->route("asistenciaSeleccion");
+        return redirect()->route("asistenciaSeleccion", $request->id_usuario);
     }
 
     // public function lunes($id,  Request $request)

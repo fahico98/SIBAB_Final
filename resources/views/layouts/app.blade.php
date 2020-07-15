@@ -115,17 +115,18 @@
           </div>
         </li>
         @endif
-        @if (Auth::user()->rol=='3' or Auth::user()->rol=='2' or Auth::user()->rol=='1' )
+        @if (Auth::user()->rol=='2')
         <li class="nav-item dropdown">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        Control de asistencia <span class="caret"></span>
-                    </a>
-
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <!-- <a class="dropdown-item" href="/asistenciaos/">{{ __('Asistencia Ocacionales SAVIA') }}</a> -->
-                        <a class="dropdown-item" href="{{route('asistenciaSeleccion')}}">{{ __('Asistencia Seleccion') }}</a>
-                    </div>
-                </li>
+            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                Control de asistencia <span class="caret"></span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <!-- <a class="dropdown-item" href="/asistenciaos/">{{ __('Asistencia Ocacionales SAVIA') }}</a> -->
+                <a class="dropdown-item" href="{{route('asistenciaSeleccion', [Auth::user()->id_usuario]) }}">
+                    {{ __('Asistencia Seleccion') }}
+                </a>
+            </div>
+        </li>
 
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             @if(Auth::user()->rol=='1')
@@ -133,15 +134,15 @@
             <a class="dropdown-item" href="{{ route('listar')}}">{{ __('Listado asistencia ocasionales SAVIA') }}</a>
             <a class="dropdown-item" href="/asistenciaos/">{{ __('Asistencia ocasionales  SAVIA') }}</a>
             <a class="dropdown-item" href="{{route('asistenciacivica')}}">{{ __('Asistencia CIVICA') }}</a>
-            @endif 
+            @endif
             @foreach(Auth::user()->beneficios() as $beneficio)
-            
+
             @if($beneficio->aux_encargado == Auth::user()->id_usuario && $beneficio->nombre_beneficio == 'SAVIA' || $beneficio->encargado == Auth::user()->id_usuario && $beneficio->nombre_beneficio == 'SAVIA' )
 
             {{-- <a class="dropdown-item" href="{{route('asistenciaSeleccion')}}">{{ __('Asistencia Seleccion') }}</a> --}}
             {{-- <a class="dropdown-item" href="{{ route('listar')}}">{{ __('Listado asistencia ocasionales SAVIA') }}</a> --}}
             <a class="dropdown-item" href="/asistenciaos/">{{ __('Asistencia ocasionales  SAVIA') }}</a>
-            @endif    
+            @endif
 
             @if($beneficio->aux_encargado == Auth::user()->id_usuario && $beneficio->nombre_beneficio == 'CIVICA' ||  $beneficio->encargado == Auth::user()->id_usuario && $beneficio->nombre_beneficio == 'CIVICA' )
             <a class="dropdown-item" href="{{route('asistenciacivica')}}">{{ __('Asistencia CIVICA') }}</a>
@@ -175,7 +176,7 @@
 
             @if (Auth::user()->rol=='4')
             {{-- pestaña --}}
-            <a class="dropdown-item" href="{{ route('PerfilAp',[ Auth::user()->id_usuario])}}">{{ __('Perfil') }}</a>                                    
+            <a class="dropdown-item" href="{{ route('PerfilAp',[ Auth::user()->id_usuario])}}">{{ __('Perfil') }}</a>
             @endif
 
             <a class="dropdown-item" href="{{ route('logout') }}"
@@ -249,7 +250,7 @@
 
           <b>Control de asistencia</b>
          @foreach(Auth::user()->beneficios() as $beneficio)
-            
+
             @if($beneficio->aux_encargado == Auth::user()->id_usuario && $beneficio->nombre_beneficio == 'SAVIA' )
                 <b>Para visualizar el control de asistencia ocasional SAVIA:</b><br><br>
                 <b>1.</b> Pasa el cursor sobre el panel de control de asistencia en la parte superior de la página, y haz clic en Asistencia ocasional SAVIA o haz <a href="/asistenciaos">clic aquí.</a><br><br>
@@ -271,7 +272,7 @@
                 <b>1.</b> Pasa el cursor sobre el panel de control de asistencia en la parte superior de la página, y haz clic en Asistencia ocasional SAVIA o haz <a href="/asistenciaos">clic aquí.</a><br><br>
                 <b>2.</b> Dirigete al aprendiz que desees eliminar y  le da clic en el botón eliminar.<br><br>
                 <b>3.</b> Haz clic en eliminar.<br><br>
-            @endif    
+            @endif
 
             @if($beneficio->aux_encargado == Auth::user()->id_usuario && $beneficio->nombre_beneficio == 'CIVICA' )
 
@@ -288,7 +289,7 @@
                 <b>5.</b> Haz clic en guardar.<br><br>
 
             @endif
-        @endforeach 
+        @endforeach
 
           <b>Perfil</b><br><br>
           <b>Para actualizar o modificar tu información de perfil:</b><br><br>
@@ -319,7 +320,7 @@
     </i></span>
   </a>
 </li>
-@endif 
+@endif
 
 @endguest
 </ul>

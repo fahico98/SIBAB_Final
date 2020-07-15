@@ -45,10 +45,7 @@
                                     </button>
                                 </div>
 
-                                <form method="POST" action="{{ route('asistenciaSeleccion.create') }}">
-
-                                    {{ csrf_field() }}
-                                    @method('PUT')
+                                <form method="GET" action="{{ route('asistenciaSeleccion.create', [$id_encargado]) }}">
 
                                     <div class="modal-body">
                                         <div class="row">
